@@ -1,0 +1,14 @@
+/**
+ * Custom operational error class for the application.
+ * Distinguishes between expected operational errors and programming bugs.
+ */
+class AppError extends Error {
+  constructor(message, statusCode) {
+    super(message);
+    this.statusCode = statusCode;
+    this.isOperational = true;
+    Error.captureStackTrace(this, this.constructor);
+  }
+}
+
+module.exports = AppError;

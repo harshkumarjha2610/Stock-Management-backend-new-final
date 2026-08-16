@@ -1,0 +1,356 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum StoreCategory {
+  GROCERY
+  GARMENTS
+}
+
+enum Role {
+  SUPER_ADMIN
+  ADMIN
+  STAFF
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum CustomerStatus {
+  active
+  inactive
+}
+
+enum CustomerTag {
+  new
+  regular
+  vip
+}
+
+enum StockStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum StockType {
+  IN
+  OUT
+}
+
+enum PaymentMethod {
+  CASH
+  UPI
+  CARD
+  BANK_TRANSFER
+}
+
+enum PaidStatus {
+  PAID
+  UNPAID
+  PARTIAL
+}
+
+enum BillType {
+  SALE
+  RETURN
+}
+
+enum AttendanceStatus {
+  PRESENT
+  ABSENT
+  HALF_DAY
+}
+
+enum SalaryPaymentStatus {
+  PAID
+  PENDING
+}
+
+model Store {
+  id             Int              @id @default(autoincrement())
+  name           String           @db.VarChar(150)
+  owner_name     String           @db.VarChar(150)
+  email          String?          @db.VarChar(255)
+  phone          String?          @db.VarChar(20)
+  address        String?
+  category       StoreCategory    @default(GROCERY)
+  logo_url       String?
+  upi_id         String?          @db.VarChar(150)
+  upi_payee_name String?          @db.VarChar(150)
+  created_at     DateTime         @default(now()) @map("created_at")
+  updated_at     DateTime         @updatedAt @map("updated_at")
+  users          User[]
+  products       Product[]
+  customers      Customer[]
+  bills          Bill[]
+  stockHistory   StockHistory[]
+  staff          Staff[]
+  attendance     Attendance[]
+  salaryPayments SalaryPayment[]
+  last_active_users User[]      @relation("LastActiveStore")
+
+  @@map("stores")
+}
+
+model User {
+  id                   Int           @id @default(autoincrement())
+  store_id             Int?          @db.Integer
+  store                Store?        @relation(fields: [store_id], references: [id])
+  name                 String        @db.VarChar(150)
+  email                String        @unique @db.VarChar(255)
+  phone                String?       @db.VarChar(20)
+  password_hash        String        @db.VarChar(255)
+  role                 Role          @default(STAFF)
+  status               UserStatus    @default(ACTIVE)
+  last_active_store_id Int?          @db.Integer
+  last_active_store    Store?        @relation("LastActiveStore", fields: [last_active_store_id], references: [id])
+  staffProfile         Staff?        @relation("StaffUser")
+  bills_billed         Bill[]        @relation("BillsBilledBy")
+  created_at           DateTime      @default(now()) @map("created_at")
+  updated_at           DateTime      @updatedAt @map("updated_at")
+
+  @@map("users")
+}
+
+model Product {
+  id                Int             @id @default(autoincrement())
+  store_id          Int             @db.Integer
+  store             Store           @relation(fields: [store_id], references: [id])
+
+  name              String          @db.VarChar(200)
+  barcode           String?         @db.VarChar(100)
+  sku               String?         @db.VarChar(100)
+  brand             String?         @db.VarChar(100)
+  category          String?         @db.VarChar(100)
+
+  buying_price      Decimal         @default(0) @db.Decimal(12, 2)
+  selling_price     Decimal         @default(0) @db.Decimal(12, 2)
+  gst_percent       Decimal         @default(0) @db.Decimal(5, 2)
+
+  stock_quantity    Int             @default(0)
+  min_stock_level   Int             @default(5)
+
+  status            StockStatus     @default(ACTIVE)
+
+  barcode_image_url String?
+
+  fabric            String?         @db.VarChar(100)
+  color             String?         @db.VarChar(100)
+  gender            String?         @db.VarChar(50)
+
+  image_url         String?
+
+  unit              String?         @db.VarChar(50)
+  hsn_code          String?         @db.VarChar(50)
+
+  expiry_date       DateTime?       @db.Date
+  mfg_date          DateTime?       @db.Date
+
+  // Purchase Details
+  invoice_number    String?         @db.VarChar(100)
+  purchase_date     DateTime?       @db.Date
+
+  description       String?
+
+  created_at        DateTime        @default(now()) @map("created_at")
+  updated_at        DateTime        @updatedAt @map("updated_at")
+
+  stockHistory      StockHistory[]
+  billItems         BillItem[]
+  sizes             ProductSize[]
+
+  @@unique([store_id, barcode], map: "products_store_barcode_unique")
+  @@unique([store_id, sku], map: "products_store_sku_unique")
+  @@index([store_id], map: "products_store_id_idx")
+  @@index([category], map: "products_category_idx")
+  @@index([status], map: "products_status_idx")
+  @@map("products")
+}
+
+model ProductSize {
+  id         Int      @id @default(autoincrement())
+  product_id Int      @db.Integer
+  product    Product  @relation(fields: [product_id], references: [id])
+  size       String   @db.VarChar(20)
+  quantity   Int      @default(0)
+  barcode    String?  @db.VarChar(100)
+  barcode_image_url String?
+  created_at DateTime @default(now()) @map("created_at")
+  updated_at DateTime @updatedAt @map("updated_at")
+
+  @@unique([product_id, size])
+  @@index([product_id])
+  @@index([barcode])
+  @@map("product_sizes")
+}
+
+model StockHistory {
+  id             Int         @id @default(autoincrement())
+  store_id       Int         @db.Integer
+  store          Store       @relation(fields: [store_id], references: [id])
+  product_id     Int         @db.Integer
+  product        Product     @relation(fields: [product_id], references: [id])
+  type           StockType
+  quantity       Int
+  purchase_price Decimal?    @db.Decimal(12, 2)
+  reason         String?     @db.VarChar(500)
+  supplier_name  String?     @db.VarChar(200)
+  note           String?     @db.VarChar(500)
+  created_at     DateTime    @default(now()) @map("created_at")
+  updated_at     DateTime    @updatedAt @map("updated_at")
+
+  @@index([store_id])
+  @@index([product_id])
+  @@index([created_at])
+  @@map("stock_history")
+}
+
+model Customer {
+  id            Int          @id @default(autoincrement())
+  store_id      Int          @db.Integer
+  store         Store        @relation(fields: [store_id], references: [id])
+  name          String       @db.VarChar(150)
+  phone         String?      @db.VarChar(20)
+  email         String?      @db.VarChar(100)
+  address       String?
+  city          String?      @db.VarChar(100)
+  status        CustomerStatus @default(active)
+  tag           CustomerTag  @default(new)
+  total_orders  Int          @default(0)
+  total_spent   Decimal      @default(0) @db.Decimal(14, 2)
+  last_purchase DateTime?    @db.Date
+  created_at    DateTime     @default(now()) @map("created_at")
+  updated_at    DateTime     @updatedAt @map("updated_at")
+  bills         Bill[]
+
+  @@index([store_id])
+  @@index([phone])
+  @@index([status])
+  @@index([tag])
+  @@map("customers")
+}
+
+model Bill {
+  id             Int          @id @default(autoincrement())
+  store_id       Int          @db.Integer
+  store          Store        @relation(fields: [store_id], references: [id])
+  invoice_number String       @unique @db.VarChar(50)
+  customer_id    Int?         @db.Integer
+  customer       Customer?    @relation(fields: [customer_id], references: [id])
+  billed_by      Int?         @db.Integer
+  biller         User?        @relation("BillsBilledBy", fields: [billed_by], references: [id])
+  customer_name  String?      @db.VarChar(150)
+  customer_phone String?      @db.VarChar(20)
+  total_amount   Decimal      @default(0) @db.Decimal(14, 2)
+  gst_amount     Decimal      @default(0) @db.Decimal(14, 2)
+  discount       Decimal      @default(0) @db.Decimal(14, 2)
+  discount_percent Decimal    @default(0) @db.Decimal(5, 2)
+  final_amount   Decimal      @default(0) @db.Decimal(14, 2)
+  grand_total    Decimal      @default(0) @db.Decimal(14, 2)
+  cash_received  Decimal      @default(0) @db.Decimal(14, 2)
+  payment_method PaymentMethod @default(CASH)
+  paid_status    PaidStatus   @default(PAID)
+  type           BillType     @default(SALE)
+  created_at     DateTime     @default(now()) @map("created_at")
+  updated_at     DateTime     @updatedAt @map("updated_at")
+  items          BillItem[]
+
+  @@index([store_id])
+  @@index([customer_id])
+  @@index([billed_by])
+  @@index([created_at])
+  @@map("bills")
+}
+
+model BillItem {
+  id            Int      @id @default(autoincrement())
+  bill_id       Int      @db.Integer
+  bill          Bill     @relation(fields: [bill_id], references: [id])
+  product_id    Int      @db.Integer
+  product       Product  @relation(fields: [product_id], references: [id])
+  size          String?  @db.VarChar(20)
+  quantity      Int
+  purchase_price Decimal  @default(0) @db.Decimal(12, 2)
+  price         Decimal  @db.Decimal(12, 2)
+  discount      Decimal  @default(0) @db.Decimal(12, 2)
+  gst_percent   Decimal  @default(0) @db.Decimal(5, 2)
+  gst_amount    Decimal  @default(0) @db.Decimal(12, 2)
+  total_amount  Decimal  @default(0) @db.Decimal(14, 2)
+  created_at    DateTime @default(now()) @map("created_at")
+  updated_at    DateTime @updatedAt @map("updated_at")
+
+  @@index([bill_id])
+  @@index([product_id])
+  @@map("bill_items")
+}
+
+model Staff {
+  id           Int          @id @default(autoincrement())
+  store_id     Int          @db.Integer
+  store        Store        @relation(fields: [store_id], references: [id])
+  name         String       @db.VarChar(150)
+  phone        String?      @db.VarChar(20)
+  address      String?
+  aadhar_card  String?      @db.VarChar(20)
+  email_id     String?      @db.VarChar(150)
+  photo_url    String?
+  base_salary  Decimal      @default(0) @db.Decimal(12, 2)
+  joining_date DateTime?    @db.Date
+  status       StockStatus  @default(ACTIVE)
+  user_id      Int?         @db.Integer @unique
+  user         User?        @relation(fields: [user_id], references: [id], name: "StaffUser")
+  created_at   DateTime     @default(now()) @map("created_at")
+  updated_at   DateTime     @updatedAt @map("updated_at")
+  attendance   Attendance[]
+  salaryPayments SalaryPayment[]
+
+  @@index([store_id])
+  @@map("staff")
+}
+
+model Attendance {
+  id            Int              @id @default(autoincrement())
+  staff_id      Int              @db.Integer
+  staff         Staff            @relation(fields: [staff_id], references: [id])
+  store_id      Int              @db.Integer
+  store         Store            @relation(fields: [store_id], references: [id])
+  date          DateTime         @db.Date
+  check_in      DateTime?
+  check_out     DateTime?
+  working_hours Decimal?         @db.Decimal(5, 2)
+  status        AttendanceStatus @default(PRESENT)
+  created_at    DateTime         @default(now()) @map("created_at")
+  updated_at    DateTime         @updatedAt @map("updated_at")
+
+  @@index([staff_id])
+  @@index([store_id])
+  @@index([date])
+  @@map("attendance")
+}
+
+model SalaryPayment {
+  id             Int                 @id @default(autoincrement())
+  staff_id       Int                 @db.Integer
+  staff          Staff               @relation(fields: [staff_id], references: [id])
+  store_id       Int                 @db.Integer
+  store          Store               @relation(fields: [store_id], references: [id])
+  month          String              @db.VarChar(7)
+  amount         Decimal             @db.Decimal(12, 2)
+  paid_date      DateTime?           @db.Date
+  payment_method PaymentMethod       @default(CASH)
+  status         SalaryPaymentStatus @default(PAID)
+  created_at     DateTime            @default(now()) @map("created_at")
+  updated_at     DateTime            @updatedAt @map("updated_at")
+
+  @@index([staff_id])
+  @@index([store_id])
+  @@index([month])
+  @@map("salary_payments")
+}

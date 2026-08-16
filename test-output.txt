@@ -1,0 +1,1484 @@
+
+> stock-management-backend@1.0.0 test
+> jest --runInBand --forceExit --detectOpenHandles --verbose tests/02-operations.test.js
+
+  console.log
+    ✅ Super Admin seeded: superadmin@stockms.com
+
+      at log (src/seeders/superAdmin.seed.js:29:13)
+
+[0mPOST /api/auth/login [32m200[0m 1156.805 ms - 497[0m
+[0mPOST /api/stores [32m201[0m 86.509 ms - 307[0m
+[0mPOST /api/users [32m201[0m 1121.535 ms - 277[0m
+[0mPOST /api/auth/login [32m200[0m 1108.096 ms - 463[0m
+[0mPOST /api/products [32m201[0m 251.732 ms - 591[0m
+[0mPOST /api/products [32m201[0m 90.961 ms - 590[0m
+[0mPOST /api/stock/in [32m201[0m 47.979 ms - 324[0m
+[0mPOST /api/stock/out [32m200[0m 36.795 ms - 314[0m
+  console.error
+    ❌ Error: {
+      message: 'Insufficient stock. Available: 3, Requested: 999',
+      stack: 'Error: Insufficient stock. Available: 3, Requested: 999\n' +
+        '    at Object.stockOut (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\services\\stock.service.js:79:13)\n' +
+        '    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\controllers\\stock.controller.js:11:18',
+      statusCode: 400
+    }
+
+    [0m [90m 24 |[39m
+     [90m 25 |[39m   [90m// Log full error[39m
+    [31m[1m>[22m[39m[90m 26 |[39m   console[33m.[39merror([32m'❌ Error:'[39m[33m,[39m {
+     [90m    |[39m           [31m[1m^[22m[39m
+     [90m 27 |[39m     message[33m:[39m err[33m.[39mmessage[33m,[39m
+     [90m 28 |[39m     stack[33m:[39m err[33m.[39mstack[33m,[39m
+     [90m 29 |[39m     statusCode[33m,[39m[0m
+
+      at error (src/middlewares/error.middleware.js:26:11)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:71:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:326:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:67:12)
+      at trim_prefix (node_modules/express/lib/router/index.js:326:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at node_modules/express/lib/router/index.js:646:15
+      at next (node_modules/express/lib/router/index.js:265:14)
+      at node_modules/express/lib/router/index.js:646:15
+      at next (node_modules/express/lib/router/index.js:265:14)
+      at next (node_modules/express/lib/router/route.js:141:14)
+
+[0mPOST /api/stock/out [33m400[0m 63.366 ms - 78[0m
+  console.error
+    ❌ Error: {
+      message: '"product_id" is required',
+      stack: 'Error: "product_id" is required\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\middlewares\\validate.middleware.js:16:19\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\route.js:149:13)\n' +
+        '    at Route.dispatch (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\route.js:119:3)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:284:15\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\middlewares\\auth.middleware.js:79:3)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\middlewares\\auth.middleware.js:35:5)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\middlewares\\auth.middleware.js:21:5)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at Function.handle (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:175:3)\n' +
+        '    at router (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:47:12)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at Function.handle (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:175:3)\n' +
+        '    at router (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:47:12)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at urlencodedParser (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\body-parser\\lib\\types\\urlencoded.js:82:7)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\body-parser\\lib\\read.js:137:5\n' +
+        '    at AsyncResource.runInAsyncScope (node:async_hooks:211:14)\n' +
+        '    at invokeCallback (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\raw-body\\index.js:238:16)\n' +
+        '    at done (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\raw-body\\index.js:227:7)\n' +
+        '    at IncomingMessage.onEnd (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\raw-body\\index.js:287:7)\n' +
+        '    at IncomingMessage.emit (node:events:524:28)\n' +
+        '    at endReadableNT (node:internal/streams/readable:1698:12)\n' +
+        '    at processTicksAndRejections (node:internal/process/task_queues:90:21)',
+      statusCode: 400
+    }
+
+    [0m [90m 24 |[39m
+     [90m 25 |[39m   [90m// Log full error[39m
+    [31m[1m>[22m[39m[90m 26 |[39m   console[33m.[39merror([32m'❌ Error:'[39m[33m,[39m {
+     [90m    |[39m           [31m[1m^[22m[39m
+     [90m 27 |[39m     message[33m:[39m err[33m.[39mmessage[33m,[39m
+     [90m 28 |[39m     stack[33m:[39m err[33m.[39mstack[33m,[39m
+     [90m 29 |[39m     statusCode[33m,[39m[0m
+
+      at error (src/middlewares/error.middleware.js:26:11)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:71:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:326:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:67:12)
+      at trim_prefix (node_modules/express/lib/router/index.js:326:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at node_modules/express/lib/router/index.js:646:15
+      at next (node_modules/express/lib/router/index.js:265:14)
+      at node_modules/express/lib/router/index.js:646:15
+      at next (node_modules/express/lib/router/index.js:265:14)
+      at next (node_modules/express/lib/router/route.js:141:14)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:67:12)
+      at next (node_modules/express/lib/router/route.js:147:13)
+      at next (src/middlewares/validate.middleware.js:16:14)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at next (node_modules/express/lib/router/route.js:149:13)
+      at Route.dispatch (node_modules/express/lib/router/route.js:119:3)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at node_modules/express/lib/router/index.js:284:15
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at next (src/middlewares/auth.middleware.js:79:3)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at next (src/middlewares/auth.middleware.js:35:5)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at next (src/middlewares/auth.middleware.js:21:5)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at Function.handle (node_modules/express/lib/router/index.js:175:3)
+      at router (node_modules/express/lib/router/index.js:47:12)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at Function.handle (node_modules/express/lib/router/index.js:175:3)
+      at router (node_modules/express/lib/router/index.js:47:12)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at urlencodedParser (node_modules/body-parser/lib/types/urlencoded.js:82:7)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at node_modules/body-parser/lib/read.js:137:5
+      at invokeCallback (node_modules/raw-body/index.js:238:16)
+      at done (node_modules/raw-body/index.js:227:7)
+      at IncomingMessage.onEnd (node_modules/raw-body/index.js:287:7)
+
+[0mPOST /api/stock/in [33m400[0m 44.240 ms - 56[0m
+[0mGET /api/stock/history [32m200[0m 34.445 ms - 634[0m
+[0mGET /api/stock/history?type=IN [32m200[0m 17.896 ms - 354[0m
+[0mGET /api/stock/low-stock [32m200[0m 11.591 ms - 581[0m
+[0mPOST /api/customers [32m201[0m 38.069 ms - 357[0m
+  console.error
+    ❌ Error: {
+      message: '"name" is required',
+      stack: 'Error: "name" is required\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\middlewares\\validate.middleware.js:16:19\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\route.js:149:13)\n' +
+        '    at Route.dispatch (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\route.js:119:3)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:284:15\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\middlewares\\auth.middleware.js:79:3)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\middlewares\\auth.middleware.js:35:5)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\middlewares\\auth.middleware.js:21:5)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at Function.handle (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:175:3)\n' +
+        '    at router (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:47:12)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at Function.handle (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:175:3)\n' +
+        '    at router (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:47:12)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at urlencodedParser (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\body-parser\\lib\\types\\urlencoded.js:82:7)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\body-parser\\lib\\read.js:137:5\n' +
+        '    at AsyncResource.runInAsyncScope (node:async_hooks:211:14)\n' +
+        '    at invokeCallback (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\raw-body\\index.js:238:16)\n' +
+        '    at done (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\raw-body\\index.js:227:7)\n' +
+        '    at IncomingMessage.onEnd (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\raw-body\\index.js:287:7)\n' +
+        '    at IncomingMessage.emit (node:events:524:28)\n' +
+        '    at endReadableNT (node:internal/streams/readable:1698:12)\n' +
+        '    at processTicksAndRejections (node:internal/process/task_queues:90:21)',
+      statusCode: 400
+    }
+
+    [0m [90m 24 |[39m
+     [90m 25 |[39m   [90m// Log full error[39m
+    [31m[1m>[22m[39m[90m 26 |[39m   console[33m.[39merror([32m'❌ Error:'[39m[33m,[39m {
+     [90m    |[39m           [31m[1m^[22m[39m
+     [90m 27 |[39m     message[33m:[39m err[33m.[39mmessage[33m,[39m
+     [90m 28 |[39m     stack[33m:[39m err[33m.[39mstack[33m,[39m
+     [90m 29 |[39m     statusCode[33m,[39m[0m
+
+      at error (src/middlewares/error.middleware.js:26:11)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:71:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:326:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:67:12)
+      at trim_prefix (node_modules/express/lib/router/index.js:326:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at node_modules/express/lib/router/index.js:646:15
+      at next (node_modules/express/lib/router/index.js:265:14)
+      at node_modules/express/lib/router/index.js:646:15
+      at next (node_modules/express/lib/router/index.js:265:14)
+      at next (node_modules/express/lib/router/route.js:141:14)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:67:12)
+      at next (node_modules/express/lib/router/route.js:147:13)
+      at next (src/middlewares/validate.middleware.js:16:14)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at next (node_modules/express/lib/router/route.js:149:13)
+      at Route.dispatch (node_modules/express/lib/router/route.js:119:3)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at node_modules/express/lib/router/index.js:284:15
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at next (src/middlewares/auth.middleware.js:79:3)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at next (src/middlewares/auth.middleware.js:35:5)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at next (src/middlewares/auth.middleware.js:21:5)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at Function.handle (node_modules/express/lib/router/index.js:175:3)
+      at router (node_modules/express/lib/router/index.js:47:12)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at Function.handle (node_modules/express/lib/router/index.js:175:3)
+      at router (node_modules/express/lib/router/index.js:47:12)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at urlencodedParser (node_modules/body-parser/lib/types/urlencoded.js:82:7)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at node_modules/body-parser/lib/read.js:137:5
+      at invokeCallback (node_modules/raw-body/index.js:238:16)
+      at done (node_modules/raw-body/index.js:227:7)
+      at IncomingMessage.onEnd (node_modules/raw-body/index.js:287:7)
+
+[0mPOST /api/customers [33m400[0m 40.212 ms - 50[0m
+[0mGET /api/customers [32m200[0m 15.637 ms - 362[0m
+[0mGET /api/customers/1 [32m200[0m 10.120 ms - 359[0m
+[0mPOST /api/billing [32m201[0m 97.533 ms - -[0m
+[0mGET /api/customers/1 [32m200[0m 10.680 ms - 383[0m
+[0mPOST /api/billing [32m201[0m 71.834 ms - 898[0m
+[0mGET /api/customers/1 [32m200[0m 10.850 ms - 383[0m
+[0mGET /api/products/1 [32m200[0m 17.281 ms - 593[0m
+  console.error
+    ❌ Error: {
+      message: 'Insufficient stock for "Widget B". Available: 0',
+      stack: 'Error: Insufficient stock for "Widget B". Available: 0\n' +
+        '    at Object.createBill (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\services\\billing.service.js:25:15)\n' +
+        '    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\controllers\\billing.controller.js:6:16',
+      statusCode: 400
+    }
+
+    [0m [90m 24 |[39m
+     [90m 25 |[39m   [90m// Log full error[39m
+    [31m[1m>[22m[39m[90m 26 |[39m   console[33m.[39merror([32m'❌ Error:'[39m[33m,[39m {
+     [90m    |[39m           [31m[1m^[22m[39m
+     [90m 27 |[39m     message[33m:[39m err[33m.[39mmessage[33m,[39m
+     [90m 28 |[39m     stack[33m:[39m err[33m.[39mstack[33m,[39m
+     [90m 29 |[39m     statusCode[33m,[39m[0m
+
+      at error (src/middlewares/error.middleware.js:26:11)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:71:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:326:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:67:12)
+      at trim_prefix (node_modules/express/lib/router/index.js:326:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at node_modules/express/lib/router/index.js:646:15
+      at next (node_modules/express/lib/router/index.js:265:14)
+      at node_modules/express/lib/router/index.js:646:15
+      at next (node_modules/express/lib/router/index.js:265:14)
+      at next (node_modules/express/lib/router/route.js:141:14)
+
+[0mPOST /api/billing [33m400[0m 40.002 ms - 79[0m
+  console.error
+    ❌ Error: {
+      message: 'At least one item is required to create a bill',
+      stack: 'Error: At least one item is required to create a bill\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\middlewares\\validate.middleware.js:16:19\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\route.js:149:13)\n' +
+        '    at Route.dispatch (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\route.js:119:3)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:284:15\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\middlewares\\auth.middleware.js:79:3)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\middlewares\\auth.middleware.js:35:5)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\middlewares\\auth.middleware.js:21:5)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at Function.handle (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:175:3)\n' +
+        '    at router (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:47:12)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at Function.handle (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:175:3)\n' +
+        '    at router (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:47:12)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at urlencodedParser (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\body-parser\\lib\\types\\urlencoded.js:82:7)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\body-parser\\lib\\read.js:137:5\n' +
+        '    at AsyncResource.runInAsyncScope (node:async_hooks:211:14)\n' +
+        '    at invokeCallback (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\raw-body\\index.js:238:16)\n' +
+        '    at done (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\raw-body\\index.js:227:7)\n' +
+        '    at IncomingMessage.onEnd (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\raw-body\\index.js:287:7)\n' +
+        '    at IncomingMessage.emit (node:events:524:28)\n' +
+        '    at endReadableNT (node:internal/streams/readable:1698:12)\n' +
+        '    at processTicksAndRejections (node:internal/process/task_queues:90:21)',
+      statusCode: 400
+    }
+
+    [0m [90m 24 |[39m
+     [90m 25 |[39m   [90m// Log full error[39m
+    [31m[1m>[22m[39m[90m 26 |[39m   console[33m.[39merror([32m'❌ Error:'[39m[33m,[39m {
+     [90m    |[39m           [31m[1m^[22m[39m
+     [90m 27 |[39m     message[33m:[39m err[33m.[39mmessage[33m,[39m
+     [90m 28 |[39m     stack[33m:[39m err[33m.[39mstack[33m,[39m
+     [90m 29 |[39m     statusCode[33m,[39m[0m
+
+      at error (src/middlewares/error.middleware.js:26:11)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:71:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:326:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:67:12)
+      at trim_prefix (node_modules/express/lib/router/index.js:326:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at node_modules/express/lib/router/index.js:646:15
+      at next (node_modules/express/lib/router/index.js:265:14)
+      at node_modules/express/lib/router/index.js:646:15
+      at next (node_modules/express/lib/router/index.js:265:14)
+      at next (node_modules/express/lib/router/route.js:141:14)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:67:12)
+      at next (node_modules/express/lib/router/route.js:147:13)
+      at next (src/middlewares/validate.middleware.js:16:14)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at next (node_modules/express/lib/router/route.js:149:13)
+      at Route.dispatch (node_modules/express/lib/router/route.js:119:3)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at node_modules/express/lib/router/index.js:284:15
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at next (src/middlewares/auth.middleware.js:79:3)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at next (src/middlewares/auth.middleware.js:35:5)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at next (src/middlewares/auth.middleware.js:21:5)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at Function.handle (node_modules/express/lib/router/index.js:175:3)
+      at router (node_modules/express/lib/router/index.js:47:12)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at Function.handle (node_modules/express/lib/router/index.js:175:3)
+      at router (node_modules/express/lib/router/index.js:47:12)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at urlencodedParser (node_modules/body-parser/lib/types/urlencoded.js:82:7)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at node_modules/body-parser/lib/read.js:137:5
+      at invokeCallback (node_modules/raw-body/index.js:238:16)
+      at done (node_modules/raw-body/index.js:227:7)
+      at IncomingMessage.onEnd (node_modules/raw-body/index.js:287:7)
+
+[0mPOST /api/billing [33m400[0m 31.470 ms - 76[0m
+[0mGET /api/billing [32m200[0m 26.205 ms - -[0m
+[0mGET /api/billing/1 [32m200[0m 15.585 ms - -[0m
+[0mGET /api/customers/1/purchases [32m200[0m 23.732 ms - -[0m
+[0mGET /api/reports/dashboard [32m200[0m 87.630 ms - 270[0m
+[0mGET /api/reports/sales [32m200[0m 16.219 ms - 192[0m
+[0mGET /api/reports/profit [32m200[0m 80.997 ms - 476[0m
+[0mGET /api/reports/gst [32m200[0m 23.255 ms - 151[0m
+  console.error
+    ❌ Error: {
+      message: '"email_id" is required. "password" is required. "base_salary" is required',
+      stack: 'Error: "email_id" is required. "password" is required. "base_salary" is required\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\middlewares\\validate.middleware.js:16:19\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\route.js:149:13)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\middlewares\\auth.middleware.js:35:5)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\route.js:149:13)\n' +
+        '    at Route.dispatch (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\route.js:119:3)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:284:15\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\middlewares\\auth.middleware.js:79:3)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\middlewares\\auth.middleware.js:21:5)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at Function.handle (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:175:3)\n' +
+        '    at router (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:47:12)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at Function.handle (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:175:3)\n' +
+        '    at router (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:47:12)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at urlencodedParser (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\body-parser\\lib\\types\\urlencoded.js:82:7)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\body-parser\\lib\\read.js:137:5\n' +
+        '    at AsyncResource.runInAsyncScope (node:async_hooks:211:14)\n' +
+        '    at invokeCallback (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\raw-body\\index.js:238:16)\n' +
+        '    at done (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\raw-body\\index.js:227:7)\n' +
+        '    at IncomingMessage.onEnd (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\raw-body\\index.js:287:7)\n' +
+        '    at IncomingMessage.emit (node:events:524:28)\n' +
+        '    at endReadableNT (node:internal/streams/readable:1698:12)\n' +
+        '    at processTicksAndRejections (node:internal/process/task_queues:90:21)',
+      statusCode: 400
+    }
+
+    [0m [90m 24 |[39m
+     [90m 25 |[39m   [90m// Log full error[39m
+    [31m[1m>[22m[39m[90m 26 |[39m   console[33m.[39merror([32m'❌ Error:'[39m[33m,[39m {
+     [90m    |[39m           [31m[1m^[22m[39m
+     [90m 27 |[39m     message[33m:[39m err[33m.[39mmessage[33m,[39m
+     [90m 28 |[39m     stack[33m:[39m err[33m.[39mstack[33m,[39m
+     [90m 29 |[39m     statusCode[33m,[39m[0m
+
+      at error (src/middlewares/error.middleware.js:26:11)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:71:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:326:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:67:12)
+      at trim_prefix (node_modules/express/lib/router/index.js:326:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at node_modules/express/lib/router/index.js:646:15
+      at next (node_modules/express/lib/router/index.js:265:14)
+      at node_modules/express/lib/router/index.js:646:15
+      at next (node_modules/express/lib/router/index.js:265:14)
+      at next (node_modules/express/lib/router/route.js:141:14)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:67:12)
+      at next (node_modules/express/lib/router/route.js:147:13)
+      at next (src/middlewares/validate.middleware.js:16:14)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at next (node_modules/express/lib/router/route.js:149:13)
+      at next (src/middlewares/auth.middleware.js:35:5)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at next (node_modules/express/lib/router/route.js:149:13)
+      at Route.dispatch (node_modules/express/lib/router/route.js:119:3)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at node_modules/express/lib/router/index.js:284:15
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at next (src/middlewares/auth.middleware.js:79:3)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at next (src/middlewares/auth.middleware.js:21:5)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at Function.handle (node_modules/express/lib/router/index.js:175:3)
+      at router (node_modules/express/lib/router/index.js:47:12)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at Function.handle (node_modules/express/lib/router/index.js:175:3)
+      at router (node_modules/express/lib/router/index.js:47:12)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at urlencodedParser (node_modules/body-parser/lib/types/urlencoded.js:82:7)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at node_modules/body-parser/lib/read.js:137:5
+      at invokeCallback (node_modules/raw-body/index.js:238:16)
+      at done (node_modules/raw-body/index.js:227:7)
+      at IncomingMessage.onEnd (node_modules/raw-body/index.js:287:7)
+
+[0mPOST /api/staff [33m400[0m 35.043 ms - 109[0m
+[0mGET /api/staff [32m200[0m 11.116 ms - 60[0m
+  console.error
+    ❌ Error: {
+      message: 'invalid input syntax for type integer: "null"',
+      stack: 'Error: \n' +
+        '    at Query.run (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\dialects\\postgres\\query.js:76:25)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\sequelize.js:650:28\n' +
+        '    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+        '    at PostgresQueryInterface.select (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\dialects\\abstract\\query-interface.js:1001:12)\n' +
+        '    at Function.findAll (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\model.js:1824:21)\n' +
+        '    at Function.findOne (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\model.js:1998:12)\n' +
+        '    at Object.getStaffById (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\services\\staff.service.js:46:17)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\controllers\\staff.controller.js:35:17',
+      statusCode: 500
+    }
+
+    [0m [90m 24 |[39m
+     [90m 25 |[39m   [90m// Log full error[39m
+    [31m[1m>[22m[39m[90m 26 |[39m   console[33m.[39merror([32m'❌ Error:'[39m[33m,[39m {
+     [90m    |[39m           [31m[1m^[22m[39m
+     [90m 27 |[39m     message[33m:[39m err[33m.[39mmessage[33m,[39m
+     [90m 28 |[39m     stack[33m:[39m err[33m.[39mstack[33m,[39m
+     [90m 29 |[39m     statusCode[33m,[39m[0m
+
+      at error (src/middlewares/error.middleware.js:26:11)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:71:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:326:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:67:12)
+      at trim_prefix (node_modules/express/lib/router/index.js:326:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at node_modules/express/lib/router/index.js:646:15
+      at next (node_modules/express/lib/router/index.js:265:14)
+      at node_modules/express/lib/router/index.js:646:15
+      at next (node_modules/express/lib/router/index.js:265:14)
+      at next (node_modules/express/lib/router/route.js:141:14)
+
+[0mGET /api/staff/null [31m500[0m 122.707 ms - 77[0m
+  console.error
+    ❌ Error: {
+      message: 'invalid input syntax for type integer: "null"',
+      stack: 'Error: \n' +
+        '    at Query.run (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\dialects\\postgres\\query.js:76:25)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\sequelize.js:650:28\n' +
+        '    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+        '    at PostgresQueryInterface.select (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\dialects\\abstract\\query-interface.js:1001:12)\n' +
+        '    at Function.findAll (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\model.js:1824:21)\n' +
+        '    at Function.findOne (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\model.js:1998:12)\n' +
+        '    at getStaffByUserId (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\services\\staff.service.js:52:17)\n' +
+        '    at resolveStaffId (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\services\\staff.service.js:84:19)\n' +
+        '    at Object.checkIn (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\services\\staff.service.js:93:27)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\controllers\\staff.controller.js:41:22',
+      statusCode: 500
+    }
+
+    [0m [90m 24 |[39m
+     [90m 25 |[39m   [90m// Log full error[39m
+    [31m[1m>[22m[39m[90m 26 |[39m   console[33m.[39merror([32m'❌ Error:'[39m[33m,[39m {
+     [90m    |[39m           [31m[1m^[22m[39m
+     [90m 27 |[39m     message[33m:[39m err[33m.[39mmessage[33m,[39m
+     [90m 28 |[39m     stack[33m:[39m err[33m.[39mstack[33m,[39m
+     [90m 29 |[39m     statusCode[33m,[39m[0m
+
+      at error (src/middlewares/error.middleware.js:26:11)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:71:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:326:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:67:12)
+      at trim_prefix (node_modules/express/lib/router/index.js:326:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at node_modules/express/lib/router/index.js:646:15
+      at next (node_modules/express/lib/router/index.js:265:14)
+      at node_modules/express/lib/router/index.js:646:15
+      at next (node_modules/express/lib/router/index.js:265:14)
+      at next (node_modules/express/lib/router/route.js:141:14)
+
+[0mPOST /api/staff/null/check-in [31m500[0m 25.455 ms - 77[0m
+  console.error
+    ❌ Error: {
+      message: 'invalid input syntax for type integer: "null"',
+      stack: 'Error: \n' +
+        '    at Query.run (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\dialects\\postgres\\query.js:76:25)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\sequelize.js:650:28\n' +
+        '    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+        '    at PostgresQueryInterface.select (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\dialects\\abstract\\query-interface.js:1001:12)\n' +
+        '    at Function.findAll (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\model.js:1824:21)\n' +
+        '    at Function.findOne (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\model.js:1998:12)\n' +
+        '    at getStaffByUserId (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\services\\staff.service.js:52:17)\n' +
+        '    at resolveStaffId (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\services\\staff.service.js:84:19)\n' +
+        '    at Object.checkIn (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\services\\staff.service.js:93:27)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\controllers\\staff.controller.js:41:22',
+      statusCode: 500
+    }
+
+    [0m [90m 24 |[39m
+     [90m 25 |[39m   [90m// Log full error[39m
+    [31m[1m>[22m[39m[90m 26 |[39m   console[33m.[39merror([32m'❌ Error:'[39m[33m,[39m {
+     [90m    |[39m           [31m[1m^[22m[39m
+     [90m 27 |[39m     message[33m:[39m err[33m.[39mmessage[33m,[39m
+     [90m 28 |[39m     stack[33m:[39m err[33m.[39mstack[33m,[39m
+     [90m 29 |[39m     statusCode[33m,[39m[0m
+
+      at error (src/middlewares/error.middleware.js:26:11)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:71:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:326:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:67:12)
+      at trim_prefix (node_modules/express/lib/router/index.js:326:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at node_modules/express/lib/router/index.js:646:15
+      at next (node_modules/express/lib/router/index.js:265:14)
+      at node_modules/express/lib/router/index.js:646:15
+      at next (node_modules/express/lib/router/index.js:265:14)
+      at next (node_modules/express/lib/router/route.js:141:14)
+
+[0mPOST /api/staff/null/check-in [31m500[0m 26.535 ms - 77[0m
+  console.error
+    ❌ Error: {
+      message: 'invalid input syntax for type integer: "null"',
+      stack: 'Error: \n' +
+        '    at Query.run (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\dialects\\postgres\\query.js:76:25)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\sequelize.js:650:28\n' +
+        '    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+        '    at PostgresQueryInterface.select (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\dialects\\abstract\\query-interface.js:1001:12)\n' +
+        '    at Function.findAll (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\model.js:1824:21)\n' +
+        '    at Function.findOne (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\model.js:1998:12)\n' +
+        '    at getStaffByUserId (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\services\\staff.service.js:52:17)\n' +
+        '    at resolveStaffId (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\services\\staff.service.js:84:19)\n' +
+        '    at Object.checkOut (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\services\\staff.service.js:126:27)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\controllers\\staff.controller.js:47:22',
+      statusCode: 500
+    }
+
+    [0m [90m 24 |[39m
+     [90m 25 |[39m   [90m// Log full error[39m
+    [31m[1m>[22m[39m[90m 26 |[39m   console[33m.[39merror([32m'❌ Error:'[39m[33m,[39m {
+     [90m    |[39m           [31m[1m^[22m[39m
+     [90m 27 |[39m     message[33m:[39m err[33m.[39mmessage[33m,[39m
+     [90m 28 |[39m     stack[33m:[39m err[33m.[39mstack[33m,[39m
+     [90m 29 |[39m     statusCode[33m,[39m[0m
+
+      at error (src/middlewares/error.middleware.js:26:11)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:71:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:326:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:67:12)
+      at trim_prefix (node_modules/express/lib/router/index.js:326:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at node_modules/express/lib/router/index.js:646:15
+      at next (node_modules/express/lib/router/index.js:265:14)
+      at node_modules/express/lib/router/index.js:646:15
+      at next (node_modules/express/lib/router/index.js:265:14)
+      at next (node_modules/express/lib/router/route.js:141:14)
+
+[0mPOST /api/staff/null/check-out [31m500[0m 24.976 ms - 77[0m
+  console.error
+    ❌ Error: {
+      message: 'invalid input syntax for type integer: "null"',
+      stack: 'Error: \n' +
+        '    at Query.run (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\dialects\\postgres\\query.js:76:25)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\sequelize.js:650:28\n' +
+        '    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+        '    at PostgresQueryInterface.select (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\dialects\\abstract\\query-interface.js:1001:12)\n' +
+        '    at Function.findAll (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\model.js:1824:21)\n' +
+        '    at Function.findOne (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\model.js:1998:12)\n' +
+        '    at getStaffByUserId (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\services\\staff.service.js:52:17)\n' +
+        '    at resolveStaffId (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\services\\staff.service.js:84:19)\n' +
+        '    at Object.checkOut (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\services\\staff.service.js:126:27)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\controllers\\staff.controller.js:47:22',
+      statusCode: 500
+    }
+
+    [0m [90m 24 |[39m
+     [90m 25 |[39m   [90m// Log full error[39m
+    [31m[1m>[22m[39m[90m 26 |[39m   console[33m.[39merror([32m'❌ Error:'[39m[33m,[39m {
+     [90m    |[39m           [31m[1m^[22m[39m
+     [90m 27 |[39m     message[33m:[39m err[33m.[39mmessage[33m,[39m
+     [90m 28 |[39m     stack[33m:[39m err[33m.[39mstack[33m,[39m
+     [90m 29 |[39m     statusCode[33m,[39m[0m
+
+      at error (src/middlewares/error.middleware.js:26:11)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:71:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:326:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:67:12)
+      at trim_prefix (node_modules/express/lib/router/index.js:326:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at node_modules/express/lib/router/index.js:646:15
+      at next (node_modules/express/lib/router/index.js:265:14)
+      at node_modules/express/lib/router/index.js:646:15
+      at next (node_modules/express/lib/router/index.js:265:14)
+      at next (node_modules/express/lib/router/route.js:141:14)
+
+[0mPOST /api/staff/null/check-out [31m500[0m 27.376 ms - 77[0m
+  console.error
+    ❌ Error: {
+      message: 'invalid input syntax for type integer: "null"',
+      stack: 'Error: \n' +
+        '    at Query.run (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\dialects\\postgres\\query.js:76:25)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\sequelize.js:650:28\n' +
+        '    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+        '    at PostgresQueryInterface.select (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\dialects\\abstract\\query-interface.js:1001:12)\n' +
+        '    at Function.findAll (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\model.js:1824:21)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\controllers\\staff.controller.js:63:19',
+      statusCode: 500
+    }
+
+    [0m [90m 24 |[39m
+     [90m 25 |[39m   [90m// Log full error[39m
+    [31m[1m>[22m[39m[90m 26 |[39m   console[33m.[39merror([32m'❌ Error:'[39m[33m,[39m {
+     [90m    |[39m           [31m[1m^[22m[39m
+     [90m 27 |[39m     message[33m:[39m err[33m.[39mmessage[33m,[39m
+     [90m 28 |[39m     stack[33m:[39m err[33m.[39mstack[33m,[39m
+     [90m 29 |[39m     statusCode[33m,[39m[0m
+
+      at error (src/middlewares/error.middleware.js:26:11)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:71:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:326:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:67:12)
+      at trim_prefix (node_modules/express/lib/router/index.js:326:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at node_modules/express/lib/router/index.js:646:15
+      at Immediate.next (node_modules/express/lib/router/index.js:265:14)
+      at Immediate._onImmediate (node_modules/express/lib/router/index.js:646:15)
+
+[0mGET /api/staff/null/attendance [31m500[0m 15.921 ms - 77[0m
+  console.error
+    ❌ Error: {
+      message: 'You do not have permission to perform this action.',
+      stack: 'Error: You do not have permission to perform this action.\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\middlewares\\auth.middleware.js:33:19\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\route.js:149:13)\n' +
+        '    at Route.dispatch (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\route.js:119:3)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:284:15\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\middlewares\\auth.middleware.js:79:3)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\middlewares\\auth.middleware.js:21:5)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at Function.handle (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:175:3)\n' +
+        '    at router (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:47:12)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at Function.handle (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:175:3)\n' +
+        '    at router (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:47:12)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at urlencodedParser (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\body-parser\\lib\\types\\urlencoded.js:82:7)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\body-parser\\lib\\read.js:137:5\n' +
+        '    at AsyncResource.runInAsyncScope (node:async_hooks:211:14)\n' +
+        '    at invokeCallback (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\raw-body\\index.js:238:16)\n' +
+        '    at done (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\raw-body\\index.js:227:7)\n' +
+        '    at IncomingMessage.onEnd (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\raw-body\\index.js:287:7)\n' +
+        '    at IncomingMessage.emit (node:events:524:28)\n' +
+        '    at endReadableNT (node:internal/streams/readable:1698:12)\n' +
+        '    at processTicksAndRejections (node:internal/process/task_queues:90:21)',
+      statusCode: 403
+    }
+
+    [0m [90m 24 |[39m
+     [90m 25 |[39m   [90m// Log full error[39m
+    [31m[1m>[22m[39m[90m 26 |[39m   console[33m.[39merror([32m'❌ Error:'[39m[33m,[39m {
+     [90m    |[39m           [31m[1m^[22m[39m
+     [90m 27 |[39m     message[33m:[39m err[33m.[39mmessage[33m,[39m
+     [90m 28 |[39m     stack[33m:[39m err[33m.[39mstack[33m,[39m
+     [90m 29 |[39m     statusCode[33m,[39m[0m
+
+      at error (src/middlewares/error.middleware.js:26:11)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:71:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:326:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:67:12)
+      at trim_prefix (node_modules/express/lib/router/index.js:326:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at node_modules/express/lib/router/index.js:646:15
+      at next (node_modules/express/lib/router/index.js:265:14)
+      at node_modules/express/lib/router/index.js:646:15
+      at next (node_modules/express/lib/router/index.js:265:14)
+      at next (node_modules/express/lib/router/route.js:141:14)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:67:12)
+      at next (node_modules/express/lib/router/route.js:147:13)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:67:12)
+      at next (node_modules/express/lib/router/route.js:147:13)
+      at next (src/middlewares/auth.middleware.js:33:14)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at next (node_modules/express/lib/router/route.js:149:13)
+      at Route.dispatch (node_modules/express/lib/router/route.js:119:3)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at node_modules/express/lib/router/index.js:284:15
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at next (src/middlewares/auth.middleware.js:79:3)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at next (src/middlewares/auth.middleware.js:21:5)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at Function.handle (node_modules/express/lib/router/index.js:175:3)
+      at router (node_modules/express/lib/router/index.js:47:12)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at Function.handle (node_modules/express/lib/router/index.js:175:3)
+      at router (node_modules/express/lib/router/index.js:47:12)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at urlencodedParser (node_modules/body-parser/lib/types/urlencoded.js:82:7)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at node_modules/body-parser/lib/read.js:137:5
+      at invokeCallback (node_modules/raw-body/index.js:238:16)
+      at done (node_modules/raw-body/index.js:227:7)
+      at IncomingMessage.onEnd (node_modules/raw-body/index.js:287:7)
+
+[0mPOST /api/salary [33m403[0m 31.523 ms - 80[0m
+  console.error
+    ❌ Error: {
+      message: 'You do not have permission to perform this action.',
+      stack: 'Error: You do not have permission to perform this action.\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\middlewares\\auth.middleware.js:33:19\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\route.js:149:13)\n' +
+        '    at Route.dispatch (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\route.js:119:3)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:284:15\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\middlewares\\auth.middleware.js:79:3)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\middlewares\\auth.middleware.js:21:5)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at Function.handle (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:175:3)\n' +
+        '    at router (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:47:12)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at Function.handle (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:175:3)\n' +
+        '    at router (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:47:12)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at urlencodedParser (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\body-parser\\lib\\types\\urlencoded.js:82:7)\n' +
+        '    at Layer.handle [as handle_request] (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+        '    at trim_prefix (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:328:13)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:286:9\n' +
+        '    at Function.process_params (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:346:12)\n' +
+        '    at next (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\express\\lib\\router\\index.js:280:10)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\body-parser\\lib\\read.js:137:5\n' +
+        '    at AsyncResource.runInAsyncScope (node:async_hooks:211:14)\n' +
+        '    at invokeCallback (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\raw-body\\index.js:238:16)\n' +
+        '    at done (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\raw-body\\index.js:227:7)\n' +
+        '    at IncomingMessage.onEnd (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\raw-body\\index.js:287:7)\n' +
+        '    at IncomingMessage.emit (node:events:524:28)\n' +
+        '    at endReadableNT (node:internal/streams/readable:1698:12)\n' +
+        '    at processTicksAndRejections (node:internal/process/task_queues:90:21)',
+      statusCode: 403
+    }
+
+    [0m [90m 24 |[39m
+     [90m 25 |[39m   [90m// Log full error[39m
+    [31m[1m>[22m[39m[90m 26 |[39m   console[33m.[39merror([32m'❌ Error:'[39m[33m,[39m {
+     [90m    |[39m           [31m[1m^[22m[39m
+     [90m 27 |[39m     message[33m:[39m err[33m.[39mmessage[33m,[39m
+     [90m 28 |[39m     stack[33m:[39m err[33m.[39mstack[33m,[39m
+     [90m 29 |[39m     statusCode[33m,[39m[0m
+
+      at error (src/middlewares/error.middleware.js:26:11)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:71:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:326:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:67:12)
+      at trim_prefix (node_modules/express/lib/router/index.js:326:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at node_modules/express/lib/router/index.js:646:15
+      at next (node_modules/express/lib/router/index.js:265:14)
+      at node_modules/express/lib/router/index.js:646:15
+      at next (node_modules/express/lib/router/index.js:265:14)
+      at next (node_modules/express/lib/router/route.js:141:14)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:67:12)
+      at next (node_modules/express/lib/router/route.js:147:13)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:67:12)
+      at next (node_modules/express/lib/router/route.js:147:13)
+      at next (src/middlewares/auth.middleware.js:33:14)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at next (node_modules/express/lib/router/route.js:149:13)
+      at Route.dispatch (node_modules/express/lib/router/route.js:119:3)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at node_modules/express/lib/router/index.js:284:15
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at next (src/middlewares/auth.middleware.js:79:3)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at next (src/middlewares/auth.middleware.js:21:5)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at Function.handle (node_modules/express/lib/router/index.js:175:3)
+      at router (node_modules/express/lib/router/index.js:47:12)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at Function.handle (node_modules/express/lib/router/index.js:175:3)
+      at router (node_modules/express/lib/router/index.js:47:12)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at urlencodedParser (node_modules/body-parser/lib/types/urlencoded.js:82:7)
+      at Layer.handle [as handle_request] (node_modules/express/lib/router/layer.js:95:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:328:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at node_modules/body-parser/lib/read.js:137:5
+      at invokeCallback (node_modules/raw-body/index.js:238:16)
+      at done (node_modules/raw-body/index.js:227:7)
+      at IncomingMessage.onEnd (node_modules/raw-body/index.js:287:7)
+
+[0mPOST /api/salary [33m403[0m 26.222 ms - 80[0m
+  console.error
+    ❌ Error: {
+      message: 'invalid input syntax for type integer: "null"',
+      stack: 'Error: \n' +
+        '    at Query.run (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\dialects\\postgres\\query.js:76:25)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\sequelize.js:650:28\n' +
+        '    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+        '    at PostgresQueryInterface.select (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\dialects\\abstract\\query-interface.js:1001:12)\n' +
+        '    at Function.findAll (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\model.js:1824:21)\n' +
+        '    at Function.findOne (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\node_modules\\sequelize\\src\\model.js:1998:12)\n' +
+        '    at Object.getSalaryHistory (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\services\\salary.service.js:14:17)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\controllers\\salary.controller.js:11:20',
+      statusCode: 500
+    }
+
+    [0m [90m 24 |[39m
+     [90m 25 |[39m   [90m// Log full error[39m
+    [31m[1m>[22m[39m[90m 26 |[39m   console[33m.[39merror([32m'❌ Error:'[39m[33m,[39m {
+     [90m    |[39m           [31m[1m^[22m[39m
+     [90m 27 |[39m     message[33m:[39m err[33m.[39mmessage[33m,[39m
+     [90m 28 |[39m     stack[33m:[39m err[33m.[39mstack[33m,[39m
+     [90m 29 |[39m     statusCode[33m,[39m[0m
+
+      at error (src/middlewares/error.middleware.js:26:11)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:71:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:326:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:67:12)
+      at trim_prefix (node_modules/express/lib/router/index.js:326:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at node_modules/express/lib/router/index.js:646:15
+      at next (node_modules/express/lib/router/index.js:265:14)
+      at node_modules/express/lib/router/index.js:646:15
+      at next (node_modules/express/lib/router/index.js:265:14)
+      at next (node_modules/express/lib/router/route.js:141:14)
+
+[0mGET /api/salary/staff/null [31m500[0m 19.360 ms - 77[0m
+[0mPOST /api/products [32m201[0m 93.628 ms - 588[0m
+[0mDELETE /api/products/3 [32m200[0m 22.821 ms - 109[0m
+  console.error
+    ❌ Error: {
+      message: 'Product not found.',
+      stack: 'Error: Product not found.\n' +
+        '    at Object.getProductById (C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\services\\product.service.js:127:11)\n' +
+        '    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+        '    at C:\\Users\\Lenovo\\Shashank\\Code\\ALGOLOG\\stock-management-app\\stock-management\\src\\controllers\\product.controller.js:16:19',
+      statusCode: 404
+    }
+
+    [0m [90m 24 |[39m
+     [90m 25 |[39m   [90m// Log full error[39m
+    [31m[1m>[22m[39m[90m 26 |[39m   console[33m.[39merror([32m'❌ Error:'[39m[33m,[39m {
+     [90m    |[39m           [31m[1m^[22m[39m
+     [90m 27 |[39m     message[33m:[39m err[33m.[39mmessage[33m,[39m
+     [90m 28 |[39m     stack[33m:[39m err[33m.[39mstack[33m,[39m
+     [90m 29 |[39m     statusCode[33m,[39m[0m
+
+      at error (src/middlewares/error.middleware.js:26:11)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:71:5)
+      at trim_prefix (node_modules/express/lib/router/index.js:326:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at Layer.handle_error (node_modules/express/lib/router/layer.js:67:12)
+      at trim_prefix (node_modules/express/lib/router/index.js:326:13)
+      at node_modules/express/lib/router/index.js:286:9
+      at Function.process_params (node_modules/express/lib/router/index.js:346:12)
+      at next (node_modules/express/lib/router/index.js:280:10)
+      at node_modules/express/lib/router/index.js:646:15
+      at next (node_modules/express/lib/router/index.js:265:14)
+      at node_modules/express/lib/router/index.js:646:15
+      at next (node_modules/express/lib/router/index.js:265:14)
+      at next (node_modules/express/lib/router/route.js:141:14)
+
+[0mGET /api/products/3 [33m404[0m 28.074 ms - 48[0m
+[0mGET /api/nonexistent [33m404[0m 0.692 ms - 63[0m
+FAIL tests/02-operations.test.js (10.916 s)
+  Stock API
+    √ POST /api/stock/in → should add stock (97 ms)
+    √ POST /api/stock/out → should remove stock (66 ms)
+    √ POST /api/stock/out → should reject insufficient stock (109 ms)
+    √ POST /api/stock/in → should reject invalid data (86 ms)
+    √ GET /api/stock/history → should return stock history (72 ms)
+    √ GET /api/stock/history?type=IN → should filter by type (56 ms)
+    √ GET /api/stock/low-stock → should detect low stock (39 ms)
+  Customer API
+    √ POST /api/customers → should create customer (75 ms)
+    √ POST /api/customers → should reject missing name (71 ms)
+    √ GET /api/customers → should list customers (53 ms)
+    √ GET /api/customers/:id → should get customer by ID (43 ms)
+  Billing API
+    √ POST /api/billing → should create a bill with GST (152 ms)
+    √ POST /api/billing → should award coins for purchase and deduct used coins (182 ms)
+    √ POST /api/billing → should reduce stock after billing (51 ms)
+    √ POST /api/billing → should reject insufficient stock (66 ms)
+    √ POST /api/billing → should reject empty items (62 ms)
+    √ GET /api/billing → should list bills (62 ms)
+    √ GET /api/billing/:id → should get bill with items (52 ms)
+    √ GET /api/customers/:id/purchases → should show purchase history (65 ms)
+  Report API
+    √ GET /api/reports/dashboard → should return stats (137 ms)
+    √ GET /api/reports/sales → should return sales report (75 ms)
+    √ GET /api/reports/profit → should return profit breakdown (121 ms)
+    √ GET /api/reports/gst → should return GST report (57 ms)
+  Staff API
+    × POST /api/staff → should create staff member (72 ms)
+    × GET /api/staff → should list staff (43 ms)
+    × GET /api/staff/:id → should get staff by ID (167 ms)
+    × POST /api/staff/:id/check-in → should check in (66 ms)
+    × POST /api/staff/:id/check-in → should reject double check-in (60 ms)
+    × POST /api/staff/:id/check-out → should check out with hours and half-day when <6h (55 ms)
+    × POST /api/staff/:id/check-out → should reject without check-in (68 ms)
+    × GET /api/staff/:id/attendance → should return records (49 ms)
+  Salary API
+    × POST /api/salary → should record salary payment (70 ms)
+    × POST /api/salary → should reject invalid month (67 ms)
+    × GET /api/salary/staff/:staffId → should return history (54 ms)
+  Product Deletion
+    √ DELETE /api/products/:id → should delete product (241 ms)
+  404 Handler
+    √ GET /api/nonexistent → should return 404 (34 ms)
+
+  ● Staff API › POST /api/staff → should create staff member
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 201
+    Received: 400
+
+    [0m [90m 304 |[39m       [33m.[39m[36mset[39m([32m'Authorization'[39m[33m,[39m [32m`Bearer ${ctx.adminToken}`[39m)
+     [90m 305 |[39m       [33m.[39msend({ name[33m:[39m [32m'Rohit Sharma'[39m[33m,[39m phone[33m:[39m [32m'9988776655'[39m[33m,[39m salary[33m:[39m [35m25000[39m[33m,[39m joining_date[33m:[39m [32m'2026-04-01'[39m })[33m;[39m
+    [31m[1m>[22m[39m[90m 306 |[39m     expect(res[33m.[39mstatus)[33m.[39mtoBe([35m201[39m)[33m;[39m
+     [90m     |[39m                        [31m[1m^[22m[39m
+     [90m 307 |[39m     ctx[33m.[39mstaffId [33m=[39m res[33m.[39mbody[33m.[39mdata[33m.[39mid[33m;[39m
+     [90m 308 |[39m   })[33m;[39m
+     [90m 309 |[39m[0m
+
+      at Object.toBe (tests/02-operations.test.js:306:24)
+
+  ● Staff API › GET /api/staff → should list staff
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 1
+    Received: 0
+
+    [0m [90m 312 |[39m       [33m.[39m[36mset[39m([32m'Authorization'[39m[33m,[39m [32m`Bearer ${ctx.adminToken}`[39m)[33m;[39m
+     [90m 313 |[39m     expect(res[33m.[39mstatus)[33m.[39mtoBe([35m200[39m)[33m;[39m
+    [31m[1m>[22m[39m[90m 314 |[39m     expect(res[33m.[39mbody[33m.[39mdata[33m.[39mlength)[33m.[39mtoBe([35m1[39m)[33m;[39m
+     [90m     |[39m                                  [31m[1m^[22m[39m
+     [90m 315 |[39m   })[33m;[39m
+     [90m 316 |[39m
+     [90m 317 |[39m   it([32m'GET /api/staff/:id → should get staff by ID'[39m[33m,[39m [36masync[39m () [33m=>[39m {[0m
+
+      at Object.toBe (tests/02-operations.test.js:314:34)
+
+  ● Staff API › GET /api/staff/:id → should get staff by ID
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+    [0m [90m 318 |[39m     [36mconst[39m res [33m=[39m [36mawait[39m request(app)[33m.[39m[36mget[39m([32m`/api/staff/${ctx.staffId}`[39m)
+     [90m 319 |[39m       [33m.[39m[36mset[39m([32m'Authorization'[39m[33m,[39m [32m`Bearer ${ctx.adminToken}`[39m)[33m;[39m
+    [31m[1m>[22m[39m[90m 320 |[39m     expect(res[33m.[39mstatus)[33m.[39mtoBe([35m200[39m)[33m;[39m
+     [90m     |[39m                        [31m[1m^[22m[39m
+     [90m 321 |[39m     expect(res[33m.[39mbody[33m.[39mdata[33m.[39mname)[33m.[39mtoBe([32m'Rohit Sharma'[39m)[33m;[39m
+     [90m 322 |[39m   })[33m;[39m
+     [90m 323 |[39m[0m
+
+      at Object.toBe (tests/02-operations.test.js:320:24)
+
+  ● Staff API › POST /api/staff/:id/check-in → should check in
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 201
+    Received: 500
+
+    [0m [90m 325 |[39m     [36mconst[39m res [33m=[39m [36mawait[39m request(app)[33m.[39mpost([32m`/api/staff/${ctx.staffId}/check-in`[39m)
+     [90m 326 |[39m       [33m.[39m[36mset[39m([32m'Authorization'[39m[33m,[39m [32m`Bearer ${ctx.adminToken}`[39m)[33m;[39m
+    [31m[1m>[22m[39m[90m 327 |[39m     expect(res[33m.[39mstatus)[33m.[39mtoBe([35m201[39m)[33m;[39m
+     [90m     |[39m                        [31m[1m^[22m[39m
+     [90m 328 |[39m     expect(res[33m.[39mbody[33m.[39mdata[33m.[39mcheck_in)[33m.[39mtoBeDefined()[33m;[39m
+     [90m 329 |[39m     expect(res[33m.[39mbody[33m.[39mdata[33m.[39mcheck_out)[33m.[39mtoBeNull()[33m;[39m
+     [90m 330 |[39m   })[33m;[39m[0m
+
+      at Object.toBe (tests/02-operations.test.js:327:24)
+
+  ● Staff API › POST /api/staff/:id/check-in → should reject double check-in
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 400
+    Received: 500
+
+    [0m [90m 333 |[39m     [36mconst[39m res [33m=[39m [36mawait[39m request(app)[33m.[39mpost([32m`/api/staff/${ctx.staffId}/check-in`[39m)
+     [90m 334 |[39m       [33m.[39m[36mset[39m([32m'Authorization'[39m[33m,[39m [32m`Bearer ${ctx.adminToken}`[39m)[33m;[39m
+    [31m[1m>[22m[39m[90m 335 |[39m     expect(res[33m.[39mstatus)[33m.[39mtoBe([35m400[39m)[33m;[39m
+     [90m     |[39m                        [31m[1m^[22m[39m
+     [90m 336 |[39m   })[33m;[39m
+     [90m 337 |[39m
+     [90m 338 |[39m   it([32m'POST /api/staff/:id/check-out → should check out with hours and half-day when <6h'[39m[33m,[39m [36masync[39m () [33m=>[39m {[0m
+
+      at Object.toBe (tests/02-operations.test.js:335:24)
+
+  ● Staff API › POST /api/staff/:id/check-out → should check out with hours and half-day when <6h
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+    [0m [90m 339 |[39m     [36mconst[39m res [33m=[39m [36mawait[39m request(app)[33m.[39mpost([32m`/api/staff/${ctx.staffId}/check-out`[39m)
+     [90m 340 |[39m       [33m.[39m[36mset[39m([32m'Authorization'[39m[33m,[39m [32m`Bearer ${ctx.adminToken}`[39m)[33m;[39m
+    [31m[1m>[22m[39m[90m 341 |[39m     expect(res[33m.[39mstatus)[33m.[39mtoBe([35m200[39m)[33m;[39m
+     [90m     |[39m                        [31m[1m^[22m[39m
+     [90m 342 |[39m     expect(res[33m.[39mbody[33m.[39mdata[33m.[39mcheck_out)[33m.[39mtoBeDefined()[33m;[39m
+     [90m 343 |[39m     expect(res[33m.[39mbody[33m.[39mdata[33m.[39mworking_hours)[33m.[39mtoBeDefined()[33m;[39m
+     [90m 344 |[39m     expect(res[33m.[39mbody[33m.[39mdata[33m.[39mstatus)[33m.[39mtoBe([32m'HALF_DAY'[39m)[33m;[39m[0m
+
+      at Object.toBe (tests/02-operations.test.js:341:24)
+
+  ● Staff API › POST /api/staff/:id/check-out → should reject without check-in
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 400
+    Received: 500
+
+    [0m [90m 348 |[39m     [36mconst[39m res [33m=[39m [36mawait[39m request(app)[33m.[39mpost([32m`/api/staff/${ctx.staffId}/check-out`[39m)
+     [90m 349 |[39m       [33m.[39m[36mset[39m([32m'Authorization'[39m[33m,[39m [32m`Bearer ${ctx.adminToken}`[39m)[33m;[39m
+    [31m[1m>[22m[39m[90m 350 |[39m     expect(res[33m.[39mstatus)[33m.[39mtoBe([35m400[39m)[33m;[39m
+     [90m     |[39m                        [31m[1m^[22m[39m
+     [90m 351 |[39m   })[33m;[39m
+     [90m 352 |[39m
+     [90m 353 |[39m   it([32m'GET /api/staff/:id/attendance → should return records'[39m[33m,[39m [36masync[39m () [33m=>[39m {[0m
+
+      at Object.toBe (tests/02-operations.test.js:350:24)
+
+  ● Staff API › GET /api/staff/:id/attendance → should return records
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+    [0m [90m 354 |[39m     [36mconst[39m res [33m=[39m [36mawait[39m request(app)[33m.[39m[36mget[39m([32m`/api/staff/${ctx.staffId}/attendance`[39m)
+     [90m 355 |[39m       [33m.[39m[36mset[39m([32m'Authorization'[39m[33m,[39m [32m`Bearer ${ctx.adminToken}`[39m)[33m;[39m
+    [31m[1m>[22m[39m[90m 356 |[39m     expect(res[33m.[39mstatus)[33m.[39mtoBe([35m200[39m)[33m;[39m
+     [90m     |[39m                        [31m[1m^[22m[39m
+     [90m 357 |[39m     expect(res[33m.[39mbody[33m.[39mdata[33m.[39mlength)[33m.[39mtoBe([35m1[39m)[33m;[39m
+     [90m 358 |[39m   })[33m;[39m
+     [90m 359 |[39m })[33m;[39m[0m
+
+      at Object.toBe (tests/02-operations.test.js:356:24)
+
+  ● Salary API › POST /api/salary → should record salary payment
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 201
+    Received: 403
+
+    [0m [90m 367 |[39m       [33m.[39m[36mset[39m([32m'Authorization'[39m[33m,[39m [32m`Bearer ${ctx.adminToken}`[39m)
+     [90m 368 |[39m       [33m.[39msend({ staff_id[33m:[39m ctx[33m.[39mstaffId[33m,[39m month[33m:[39m [32m'2026-04'[39m[33m,[39m amount[33m:[39m [35m25000[39m[33m,[39m payment_method[33m:[39m [32m'BANK_TRANSFER'[39m[33m,[39m status[33m:[39m [32m'PAID'[39m })[33m;[39m
+    [31m[1m>[22m[39m[90m 369 |[39m     expect(res[33m.[39mstatus)[33m.[39mtoBe([35m201[39m)[33m;[39m
+     [90m     |[39m                        [31m[1m^[22m[39m
+     [90m 370 |[39m     expect(res[33m.[39mbody[33m.[39mdata[33m.[39mmonth)[33m.[39mtoBe([32m'2026-04'[39m)[33m;[39m
+     [90m 371 |[39m   })[33m;[39m
+     [90m 372 |[39m[0m
+
+      at Object.toBe (tests/02-operations.test.js:369:24)
+
+  ● Salary API › POST /api/salary → should reject invalid month
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 400
+    Received: 403
+
+    [0m [90m 375 |[39m       [33m.[39m[36mset[39m([32m'Authorization'[39m[33m,[39m [32m`Bearer ${ctx.adminToken}`[39m)
+     [90m 376 |[39m       [33m.[39msend({ staff_id[33m:[39m ctx[33m.[39mstaffId[33m,[39m month[33m:[39m [32m'April'[39m[33m,[39m amount[33m:[39m [35m25000[39m })[33m;[39m
+    [31m[1m>[22m[39m[90m 377 |[39m     expect(res[33m.[39mstatus)[33m.[39mtoBe([35m400[39m)[33m;[39m
+     [90m     |[39m                        [31m[1m^[22m[39m
+     [90m 378 |[39m   })[33m;[39m
+     [90m 379 |[39m
+     [90m 380 |[39m   it([32m'GET /api/salary/staff/:staffId → should return history'[39m[33m,[39m [36masync[39m () [33m=>[39m {[0m
+
+      at Object.toBe (tests/02-operations.test.js:377:24)
+
+  ● Salary API › GET /api/salary/staff/:staffId → should return history
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+    [0m [90m 381 |[39m     [36mconst[39m res [33m=[39m [36mawait[39m request(app)[33m.[39m[36mget[39m([32m`/api/salary/staff/${ctx.staffId}`[39m)
+     [90m 382 |[39m       [33m.[39m[36mset[39m([32m'Authorization'[39m[33m,[39m [32m`Bearer ${ctx.adminToken}`[39m)[33m;[39m
+    [31m[1m>[22m[39m[90m 383 |[39m     expect(res[33m.[39mstatus)[33m.[39mtoBe([35m200[39m)[33m;[39m
+     [90m     |[39m                        [31m[1m^[22m[39m
+     [90m 384 |[39m     expect(res[33m.[39mbody[33m.[39mdata[33m.[39mlength)[33m.[39mtoBe([35m1[39m)[33m;[39m
+     [90m 385 |[39m   })[33m;[39m
+     [90m 386 |[39m })[33m;[39m[0m
+
+      at Object.toBe (tests/02-operations.test.js:383:24)
+
+Test Suites: 1 failed, 1 total
+Tests:       11 failed, 25 passed, 36 total
+Snapshots:   0 total
+Time:        11.009 s, estimated 13 s
+Ran all test suites matching /tests\\02-operations.test.js/i.
