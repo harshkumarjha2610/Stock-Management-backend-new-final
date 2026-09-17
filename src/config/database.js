@@ -5,22 +5,24 @@ const sequelize = new Sequelize(env.db.name, env.db.user, env.db.password, {
   host: env.db.host,
   port: env.db.port,
   dialect: 'postgres',
-  logging: env.nodeEnv === 'development' ? console.log : false,
+  logging: false,
   dialectOptions: env.db.ssl ? {
     ssl: {
       require: true,
-      rejectUnauthorized: false, // For self-signed certificates (common in hosting like Render)
+      rejectUnauthorized: false,
     },
+    keepAlive: true,
   } : {},
   pool: {
-    max: 10,
-    min: 2,
+    max: 25,
+    min: 0,
     acquire: 30000,
-    idle: 10000,
+    idle: 5000,
+    evict: 1000,
   },
   define: {
     timestamps: true,
-    underscored: true, // snake_case column names
+    underscored: true,
   },
 });
 
