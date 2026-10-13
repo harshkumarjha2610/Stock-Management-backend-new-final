@@ -197,7 +197,11 @@ const getDashboardStats = async (storeId) => {
     Bill.sum('final_amount', { where: { store_id: storeId, created_at: { [Op.gte]: startOfLastMonth, [Op.lte]: endOfLastMonth } } }),
     Bill.findAll({
       where: { store_id: storeId },
-      include: [{ association: 'items', attributes: ['price', 'quantity', 'purchase_price'] }],
+      include: [{
+        association: 'items',
+        attributes: ['price', 'quantity', 'purchase_price'],
+        include: [{ association: 'product', attributes: ['buying_price'] }],
+      }],
     })
   ]);
 
@@ -221,7 +225,8 @@ const getDashboardStats = async (storeId) => {
     const factor = (bill.type === 'RETURN') ? -1 : 1;
     for (const item of bill.items) {
       const rev = (parseFloat(item.price) * item.quantity) * factor;
-      const cost = (parseFloat(item.purchase_price || 0) * item.quantity) * factor;
+      const purchasePrice = parseFloat(item.purchase_price) || (item.product ? parseFloat(item.product.buying_price) : 0);
+      const cost = (purchasePrice * item.quantity) * factor;
       totalRev += rev;
       totalProf += (rev - cost);
     }
@@ -233,6 +238,8 @@ const getDashboardStats = async (storeId) => {
   return {
     today_sales: Math.round(todaySales * 100) / 100,
     today_profit: Math.round(todayProfit * 100) / 100,
+    total_sales: Math.round(totalRev * 100) / 100,
+    total_profit: Math.round(totalProf * 100) / 100,
     total_products: totalProducts,
     low_stock_count: lowStockCount,
     total_customers: totalCustomers,

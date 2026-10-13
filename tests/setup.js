@@ -13,6 +13,11 @@ const seedSuperAdmin = require('../src/seeders/superAdmin.seed');
  * - Seed the super admin
  */
 const setupDatabase = async () => {
+  // Never force drop tables in development or production databases
+  if (process.env.NODE_ENV !== 'test_isolated') {
+    console.log('Skipping destructive DB sync');
+    return;
+  }
   await sequelize.sync({ force: true });
   await seedSuperAdmin();
 };

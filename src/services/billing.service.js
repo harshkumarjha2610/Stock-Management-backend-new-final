@@ -5,6 +5,39 @@ const AppError = require('../utils/AppError');
 const { v4: uuidv4 } = require('uuid');
 const { parsePagination, paginatedResponse } = require('../utils/pagination');
 
+const generateInvoiceNumber = async (prefix = 'INV', transaction) => {
+  const year = new Date().getFullYear();
+  const searchPattern = `${prefix}-${year}-%`;
+  const latestBill = await Bill.findOne({
+    where: {
+      invoice_number: {
+        [Op.like]: searchPattern,
+      },
+    },
+    order: [['id', 'DESC']],
+    transaction,
+  });
+
+  let nextSeq = 1;
+  if (latestBill && latestBill.invoice_number) {
+    const parts = latestBill.invoice_number.split('-');
+    if (parts.length >= 3) {
+      const parsed = parseInt(parts[2], 10);
+      if (!isNaN(parsed)) {
+        nextSeq = parsed + 1;
+      }
+    }
+  }
+
+  let candidate = `${prefix}-${year}-${String(nextSeq).padStart(6, '0')}`;
+  while (await Bill.findOne({ where: { invoice_number: candidate }, transaction })) {
+    nextSeq++;
+    candidate = `${prefix}-${year}-${String(nextSeq).padStart(6, '0')}`;
+  }
+
+  return candidate;
+};
+
 const createBill = async (data, storeId, billedByUserId) => {
   const transaction = await sequelize.transaction();
   try {
@@ -63,7 +96,7 @@ const createBill = async (data, storeId, billedByUserId) => {
 
     const finalAmount = Math.round((totalAmount + totalGST - totalDiscount) * 100) / 100;
     const prefix = isReturn ? 'RET' : 'INV';
-    const invoiceNumber = `${prefix}-${storeId}-${Date.now()}-${uuidv4().slice(0, 4).toUpperCase()}`;
+    const invoiceNumber = await generateInvoiceNumber(prefix, transaction);
 
     const usedCoins = parseInt(data.coins, 10) || 0;
     if (usedCoins < 0) throw new AppError('Invalid coins value.', 400);

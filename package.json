@@ -4,7 +4,8 @@
   "description": "Production-ready Multi-Store Stock Management System Backend",
   "main": "src/server.js",
   "scripts": {
-    "start": "node src/server.js",
+    "start": "nodemon src/server.js",
+    "start:prod": "node src/server.js",
     "dev": "nodemon src/server.js",
     "seed": "node src/seeders/superAdmin.seed.js",
     "test": "jest --runInBand --forceExit --detectOpenHandles --verbose",
