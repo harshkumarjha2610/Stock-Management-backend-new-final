@@ -55,8 +55,8 @@ const Staff = sequelize.define('Staff', {
     allowNull: true,
     references: { model: 'users', key: 'id' },
   },
-  plain_password: {
-    type: DataTypes.STRING(255),
+  staff_code: {
+    type: DataTypes.STRING(50),
     allowNull: true,
   },
 }, {

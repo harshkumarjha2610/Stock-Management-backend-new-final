@@ -8,10 +8,11 @@ const ROLES = require('../constants/roles');
 const createStaff = async (data, storeId, creatorRole) => {
   // 1. Create User account for staff if email is provided
   let userId = null;
-  console.log('DEBUG: createStaff received data:', data);
+
   if (!data.email_id || !data.password) {
     throw new AppError('Email ID and Password are required for staff creation.', 400);
   }
+
   const user = await userService.createUser({
     name: data.name,
     email: data.email_id,
@@ -20,7 +21,26 @@ const createStaff = async (data, storeId, creatorRole) => {
     role: ROLES.STAFF,
     store_id: storeId,
   }, creatorRole);
+
   userId = user.id;
+
+  // Auto-generate staff_code starting from KH-001
+  const existingStaff = await Staff.findAll({
+    where: { store_id: storeId },
+    attributes: ['staff_code']
+  });
+
+  let maxNum = 0;
+  for (const s of existingStaff) {
+    if (s.staff_code && s.staff_code.startsWith('KH-')) {
+      const num = parseInt(s.staff_code.replace('KH-', ''), 10);
+      if (!isNaN(num) && num > maxNum) {
+        maxNum = num;
+      }
+    }
+  }
+
+  const staff_code = `KH-${String(maxNum + 1).padStart(3, '0')}`;
 
   const staff = await Staff.create({
     name: data.name,
@@ -34,8 +54,9 @@ const createStaff = async (data, storeId, creatorRole) => {
     status: data.status ? data.status.toUpperCase() : 'ACTIVE',
     store_id: storeId,
     user_id: userId,
-    plain_password: data.password,
+    staff_code,
   });
+
   return staff;
 };
 
@@ -55,21 +76,6 @@ const getStaffByUserId = async (userId, storeId) => {
   return staff;
 };
 
-// const updateStaff = async (id, data, storeId) => {
-//   const staff = await getStaffById(id, storeId);
-//   await staff.update({
-//     name: data.name,
-//     phone: data.phone,
-//     address: data.address,
-//     aadhar_card: data.aadhar_card,
-//     email_id: data.email_id,
-//     photo_url: data.photo_url,
-//     joining_date: data.joining_date,
-//     base_salary: data.base_salary,
-//     status: data.status ? data.status.toUpperCase() : staff.status,
-//   });
-//   return staff;
-// };
 const updateStaff = async (id, data, storeId) => {
   const staff = await getStaffById(id, storeId);
 
@@ -119,8 +125,6 @@ const updateStaff = async (id, data, storeId) => {
         data.password.trim() !== ""
       ) {
         user.password_hash = data.password;
-        // Also update the plain_password on the staff record
-        await staff.update({ plain_password: data.password });
       }
 
       await user.save();
@@ -278,4 +282,16 @@ const markAttendance = async (data, storeId) => {
   return attendance;
 };
 
-module.exports = { createStaff, getStaff, getStaffById, getStaffByUserId, updateStaff, deleteStaff, checkIn, checkOut, getAttendance, getAllAttendance, markAttendance };
+module.exports = {
+  createStaff,
+  getStaff,
+  getStaffById,
+  getStaffByUserId,
+  updateStaff,
+  deleteStaff,
+  checkIn,
+  checkOut,
+  getAttendance,
+  getAllAttendance,
+  markAttendance
+};

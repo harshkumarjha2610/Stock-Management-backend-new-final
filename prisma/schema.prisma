@@ -304,6 +304,7 @@ model Staff {
   base_salary  Decimal      @default(0) @db.Decimal(12, 2)
   joining_date DateTime?    @db.Date
   status       StockStatus  @default(ACTIVE)
+  staff_code   String?      @db.VarChar(50)
   user_id      Int?         @db.Integer @unique
   user         User?        @relation(fields: [user_id], references: [id], name: "StaffUser")
   created_at   DateTime     @default(now()) @map("created_at")
