@@ -51,6 +51,13 @@ const Product = sequelize.define('Product', {
     defaultValue: 0,
   },
 
+  is_gst_included: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: false,
+    comment: 'Whether purchase price already includes GST',
+  },
+
   stock_quantity: {
     type: DataTypes.INTEGER,
     allowNull: false,

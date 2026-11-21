@@ -41,6 +41,9 @@ const createProduct = async (data, storeId) => {
 
         selling_price: productData.selling_price,
         gst_percent: productData.gst_percent,
+        is_gst_included: productData.is_gst_included || false,
+        discount_percent: productData.discount_percent !== undefined ? productData.discount_percent : null,
+        discounted_price: productData.discounted_price !== undefined ? productData.discounted_price : null,
         min_stock_level: productData.min_stock_level,
         status: productData.status || 'ACTIVE',
         stock_quantity: totalStock,
@@ -262,6 +265,9 @@ const updateProduct = async (id, data, storeId) => {
 
       selling_price: productData.selling_price,
       gst_percent: productData.gst_percent,
+      is_gst_included: productData.is_gst_included !== undefined ? productData.is_gst_included : false,
+      discount_percent: productData.discount_percent !== undefined ? productData.discount_percent : null,
+      discounted_price: productData.discounted_price !== undefined ? productData.discounted_price : null,
       min_stock_level: productData.min_stock_level,
       status: productData.status,
 

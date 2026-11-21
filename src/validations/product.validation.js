@@ -22,6 +22,9 @@ const createProductSchema = Joi.object({
   selling_price: Joi.number().min(0).required(),
 
   gst_percent: Joi.number().min(0).max(100).default(0),
+  is_gst_included: Joi.boolean().default(false),
+  discount_percent: Joi.number().min(0).max(100).allow(null),
+  discounted_price: Joi.number().min(0).allow(null),
 
   stock_quantity: Joi.number().integer().min(0).default(0),
 
@@ -94,6 +97,9 @@ const updateProductSchema = Joi.object({
   selling_price: Joi.number().min(0),
 
   gst_percent: Joi.number().min(0).max(100),
+  is_gst_included: Joi.boolean(),
+  discount_percent: Joi.number().min(0).max(100).allow(null),
+  discounted_price: Joi.number().min(0).allow(null),
 
   stock_quantity: Joi.number().integer().min(0),
 
