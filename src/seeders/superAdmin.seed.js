@@ -1,10 +1,10 @@
-const { User } = require('../models');
+const { User, Store } = require('../models');
 const ROLES = require('../constants/roles');
 const env = require('../config/env');
 
 /**
- * Seeds a default Super Admin user if one doesn't already exist.
- * Credentials are read from environment variables.
+ * Seeds a default Super Admin and Demo Staff user if they don't already exist.
+ * Credentials are read from environment variables or standard defaults.
  */
 const seedSuperAdmin = async () => {
   try {
@@ -14,21 +14,37 @@ const seedSuperAdmin = async () => {
 
     if (existing) {
       console.log('ℹ️  Super Admin already exists, skipping seed.');
-      return;
+    } else {
+      await User.create({
+        name: env.superAdmin.name,
+        email: env.superAdmin.email,
+        password_hash: env.superAdmin.password, // Hashed by beforeCreate hook
+        role: ROLES.SUPER_ADMIN,
+        store_id: null, // Super Admin is not tied to any store
+        status: 'ACTIVE',
+      });
+      console.log(`✅ Super Admin seeded: ${env.superAdmin.email}`);
     }
 
-    await User.create({
-      name: env.superAdmin.name,
-      email: env.superAdmin.email,
-      password_hash: env.superAdmin.password, // Hashed by beforeCreate hook
-      role: ROLES.SUPER_ADMIN,
-      store_id: null, // Super Admin is not tied to any store
-      status: 'ACTIVE',
+    // Seed Demo Staff account for testing role-based visibility
+    const existingStaff = await User.findOne({
+      where: { email: 'staff@stockmgmt.com' },
     });
 
-    console.log(`✅ Super Admin seeded: ${env.superAdmin.email}`);
+    if (!existingStaff) {
+      const store = await Store.findOne();
+      await User.create({
+        name: 'Demo Staff',
+        email: 'staff@stockmgmt.com',
+        password_hash: 'Staff@123', // Hashed by beforeCreate hook
+        role: ROLES.STAFF,
+        store_id: store ? store.id : null,
+        status: 'ACTIVE',
+      });
+      console.log('✅ Demo Staff seeded: staff@stockmgmt.com');
+    }
   } catch (error) {
-    console.error('⚠️  Super Admin seed failed:', error.message);
+    console.error('⚠️  Seed failed:', error.message);
   }
 };
 
